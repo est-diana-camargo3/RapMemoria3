@@ -12,6 +12,122 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100f;
     public float yRotationLimit = 80f;
 
+    private CharacterController controller;
+
+    private Vector2 moveInput;
+    private Vector2 lookInput;
+
+    private Vector3 velocity;
+
+    private float xRotation = 0f;
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // INPUT MOVIMIENTO
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    // INPUT CAMARA
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        lookInput = context.ReadValue<Vector2>();
+    }
+
+    void Update()
+    {
+        Move();
+        Look();
+        ApplyGravity();
+    }
+
+    // MOVIMIENTO
+
+    void Move()
+    {
+        Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+
+        move = transform.TransformDirection(move);
+
+        controller.Move(move * speed * Time.deltaTime);
+    }
+
+    // ROTACION
+
+    void Look()
+    {
+        float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
+
+        float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+
+        xRotation = Mathf.Clamp(xRotation, -yRotationLimit, yRotationLimit);
+
+        cameraPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        transform.Rotate(Vector3.up * mouseX);
+    }
+
+    // GRAVEDAD
+
+    void ApplyGravity()
+    {
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour
+{
+    [Header("Movimiento")]
+    public float speed = 5f;
+    public float gravity = -9.81f;
+
+    [Header("Camara")]
+    public Transform cameraPivot;
+    public float mouseSensitivity = 100f;
+    public float yRotationLimit = 80f;
+
     [Header("Cambio de cámara")]
     public Transform firstPersonPosition;
     public Transform thirdPersonPosition;
@@ -104,3 +220,4 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 }
+*/
