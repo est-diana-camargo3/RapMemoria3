@@ -12,31 +12,31 @@ public class CambiarNombreEtapaManager : MonoBehaviour
         Vector3 pos = player.position;
 
         // ETAPA 2
-        if (pos.x >= 29f && pos.x <= 60f &&
+        if (pos.x > 0f && pos.x <= 30f &&
             pos.z >= -30f && pos.z <= 0f)
         {
             stageText.text = "ETAPA 2: 1971 - Manifestaciones en TV";
         }
 
         // ETAPA 1
-        else if (pos.x >= -3f && pos.x <= 28.9f &&
+        else if (pos.x >= -30f && pos.x <= 0f &&
                  pos.z >= -30f && pos.z <= 0f)
         {
             stageText.text = "ETAPA 1: 1970 - El Bronx, AV Sedgwick";
         }
 
         // ETAPA 3
-        else if (pos.x >= 29f && pos.x <= 60f &&
-                 pos.z >= 0.1f && pos.z <= 30f)
+        else if (pos.x > 0f && pos.x <= 30f &&
+                 pos.z > 0f && pos.z <= 30f)
         {
-            stageText.text = "ETAPA 3: 1973 - DJ Kool mezclando";
+            stageText.text = "ETAPA 3: 1973 - DJ Kool Mezclando en sòtano";
         }
 
         // ETAPA 4
-        else if (pos.x >= -3f && pos.x <= 28.9f &&
-                 pos.z >= 0.1f && pos.z <= 30f)
+        else if (pos.x > -30f && pos.x <= 0f &&
+                 pos.z >= 0f && pos.z <= 30f)
         {
-            stageText.text = "ETAPA 4: 1974 - MC Coke rapeando";
+            stageText.text = "ETAPA 4: 1974 - MC Coke rapeando en parque";
         }
 
         // FUERA DE ZONAS
