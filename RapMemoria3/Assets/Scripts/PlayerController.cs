@@ -20,12 +20,20 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     private float xRotation = 0f;
+    private bool puedeMirar = false;
+
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        Invoke(nameof(ActivarCamara), 0.2f);
+    }
+    void ActivarCamara()
+    {
+        puedeMirar = true;
     }
 
     // INPUT MOVIMIENTO
@@ -64,6 +72,9 @@ public class PlayerController : MonoBehaviour
 
     void Look()
     {
+        if (!puedeMirar)
+            return;
+
         float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
 
         float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
