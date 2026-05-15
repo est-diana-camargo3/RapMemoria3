@@ -5886,10 +5886,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mu\xE8vete con \u2190\u2191\u2193\u2192"
+  m_text: "Mu\xE8vete con  \u2190\u2191\u2193\u2192"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bef2ada43f964646af8a38a85e4d302, type: 2}
-  m_sharedMaterial: {fileID: -214034428468213600, guid: 0bef2ada43f964646af8a38a85e4d302, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3498b052f425c094981900e76fa538ce, type: 2}
+  m_sharedMaterial: {fileID: 1128675060666577636, guid: 3498b052f425c094981900e76fa538ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18664,8 +18664,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bef2ada43f964646af8a38a85e4d302, type: 2}
-  m_sharedMaterial: {fileID: -214034428468213600, guid: 0bef2ada43f964646af8a38a85e4d302, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3498b052f425c094981900e76fa538ce, type: 2}
+  m_sharedMaterial: {fileID: 1128675060666577636, guid: 3498b052f425c094981900e76fa538ce, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
