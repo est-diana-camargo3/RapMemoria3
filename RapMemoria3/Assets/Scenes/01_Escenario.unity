@@ -19168,8 +19168,6 @@ MonoBehaviour:
   cameraPivot: {fileID: 520145471}
   mouseSensitivity: 100
   yRotationLimit: 80
-  firstPersonPosition: {fileID: 0}
-  thirdPersonPosition: {fileID: 0}
 --- !u!114 &1267589694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29480,7 +29478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc96a02ea9089134e8d6ba1c8ec887da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CambiarNombreEtapaManager
-  player: {fileID: 0}
+  player: {fileID: 1267589692}
   stageText: {fileID: 2028960821}
   etapa1Music: {fileID: 1106459867}
   etapa2Music: {fileID: 2136166221}
