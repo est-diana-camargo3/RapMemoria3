@@ -5658,6 +5658,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 30.426773, y: 10.45813, z: 0.32042703}
   m_Center: {x: -0.00002861023, y: 0, z: -0.000029295683}
+--- !u!1 &313820842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
+  m_PrefabInstance: {fileID: 917675497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &317579750
 GameObject:
   m_ObjectHideFlags: 0
@@ -16656,6 +16661,9 @@ PrefabInstance:
     - {fileID: -3578636879749363043, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 917675500}
     - targetCorrespondingSourceObject: {fileID: 6714462320202898769, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
       insertIndex: -1
       addedObject: {fileID: 917675508}
@@ -16679,6 +16687,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8543093482405976510, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
   m_PrefabInstance: {fileID: 917675497}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &917675500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313820842}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 87.15379, y: 71.97876, z: 90.39146}
+  m_Center: {x: -1.5272999, y: -5.961714, z: -8.615127}
 --- !u!1 &917675501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4501016093324894736, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
@@ -17576,8 +17605,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 121.64}
+  m_SizeDelta: {x: -357.1412, y: -243.2701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043599023
 MonoBehaviour:
@@ -17828,7 +17857,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &1055841300
 GameObject:
@@ -19667,9 +19696,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1052985225}
-  - {fileID: 1699696892}
   - {fileID: 1299513291}
+  - {fileID: 1699696892}
+  - {fileID: 1052985225}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1152255521 stripped
@@ -20714,8 +20743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdd193043162d2469fbf6e7c3877a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 3
-  gravity: -9.81
+  speed: 5
+  gravity: -20
   thirdPersonCamera: {fileID: 1827086925}
   cinematicCamera: {fileID: 1892139559}
 --- !u!114 &1267589694
@@ -20771,10 +20800,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
-    m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 2776c80d-3c14-4091-8c56-d04ced07a2b0
@@ -20843,6 +20868,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1f83eac7-b602-47a7-a36f-cbfe64279dfc
     m_ActionName: 'Player/SwitchCamera[/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1267589693}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ea44042e-8e28-43e4-bf7d-eaf7fcc8b6a7
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -20866,13 +20907,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.62
-  m_Radius: 0.68
+  m_Height: 2.68
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.22, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!65 &1267589696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24062,7 +24103,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6714462320202898769, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1608887556}
+      addedObject: {fileID: 1608887562}
     - targetCorrespondingSourceObject: {fileID: -2354730026438412809, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1608887555}
@@ -24159,8 +24200,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3906130615805142554, guid: 6e8eba9fe0f70e54f9af910c0b206655, type: 3}
---- !u!64 &1608887556
-MeshCollider:
+--- !u!65 &1608887562
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -24177,10 +24218,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 85.91242, y: 116.925156, z: 77.133415}
+  m_Center: {x: 9.211855, y: 4.8405027, z: -1.3110625}
 --- !u!1001 &1616614764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26174,7 +26214,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1704820021
 GameObject:
@@ -34569,8 +34609,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -34638,7 +34678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92, y: 503}
+  m_AnchoredPosition: {x: 128, y: 503}
   m_SizeDelta: {x: 477.7559, y: 16.8774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2029985729
