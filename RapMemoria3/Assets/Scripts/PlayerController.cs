@@ -5,7 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
     public float speed = 5f;
-    public float gravity = -9.81f;
+    public float gravity = -20f;
+    public float jumpHeight = 8f;
+    public float rotationSpeed = 120f;
 
     [Header("Camaras")]
     public GameObject thirdPersonCamera;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     private bool usingThirdPerson = true;
+    private bool jumpPressed;
 
     void Awake()
     {
@@ -26,7 +29,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Cámara inicial
         thirdPersonCamera.SetActive(true);
         cinematicCamera.SetActive(false);
     }
@@ -36,6 +38,16 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    // INPUT SALTO
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            jumpPressed = true;
+        }
     }
 
     // CAMBIO DE CAMARA
@@ -53,39 +65,49 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
-        ApplyGravity();
+        MovePlayer();
     }
 
-    // MOVIMIENTO
-
-    void Move()
+    void MovePlayer()
     {
-        // ROTACIÓN
+        // ROTACION
+
         float rotationInput = moveInput.x;
 
-        transform.Rotate(Vector3.up * rotationInput * 120f * Time.deltaTime);
+        transform.Rotate(Vector3.up * rotationInput * rotationSpeed * Time.deltaTime);
 
-        // MOVIMIENTO ADELANTE/ATRÁS
+        // MOVIMIENTO ADELANTE/ATRAS
+
         float forwardInput = moveInput.y;
 
         Vector3 moveDirection = transform.forward * forwardInput;
 
-        controller.Move(moveDirection * speed * Time.deltaTime);
-    }
+        // SI ESTA EN EL SUELO
 
-
-    // GRAVEDAD
-
-    void ApplyGravity()
-    {
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -1f;
         }
+
+        // SALTO
+
+        if (jumpPressed && controller.isGrounded)
+        {
+            velocity.y = jumpHeight;
+        }
+
+        jumpPressed = false;
+
+        // GRAVEDAD
 
         velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        // MOVIMIENTO FINAL
+
+        Vector3 finalMove =
+            (moveDirection * speed) +
+            new Vector3(0, velocity.y, 0);
+
+        controller.Move(finalMove * Time.deltaTime);
     }
 }
